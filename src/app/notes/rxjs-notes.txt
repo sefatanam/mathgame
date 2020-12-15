@@ -1,0 +1,40 @@
+// Before
+ const startTime = new Date();
+     const startTime = new Date();
+     let numberSolved = 0;
+
+    this.mathForm.statusChanges.pipe(
+    filter((value) => value === 'VALID'),
+    delay(130))
+
+    .subscribe(() => {
+      numberSolved++;
+      this.secondsPerSolution = ((new Date().getTime() - startTime.getTime()) / numberSolved / 1000);
+      this.mathForm.patchValue({
+        a: this.randomNumber(),
+        b: this.randomNumber(),
+        answer: '',
+      });
+    });
+
+
+
+ // After
+ this.mathForm.statusChanges.pipe(filter(
+      (value) => value === 'VALID'),
+      delay(130),
+      scan((acc, value) => {
+        return {
+          numberSolved: acc.numberSolved + 1,
+          startTime: acc.startTime
+        };
+      }, {numberSolved: 0, startTime: new Date()}))
+
+      .subscribe(({numberSolved, startTime}) => {
+        this.secondsPerSolution = ((new Date().getTime() - startTime.getTime()) / numberSolved / 1000);
+        this.mathForm.patchValue({
+          a: this.randomNumber(),
+          b: this.randomNumber(),
+          answer: '',
+        });
+      });

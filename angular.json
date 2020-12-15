@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "mathgame"
+  "defaultProject": "mathgame",
+  "cli": {
+    "analytics": false
+  }
 }
