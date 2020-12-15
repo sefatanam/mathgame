@@ -10,6 +10,7 @@ import {delay, filter, scan} from 'rxjs/operators';
 })
 export class EquationComponent implements OnInit {
   secondsPerSolution = 0;
+  totalAnswered = 0;
   mathForm = new FormGroup({
     a: new FormControl(this.randomNumber()),
     b: new FormControl(this.randomNumber()),
@@ -41,6 +42,7 @@ export class EquationComponent implements OnInit {
       }, {numberSolved: 0, startTime: new Date()}))
 
       .subscribe(({numberSolved, startTime}) => {
+        this.totalAnswered = numberSolved;
         this.secondsPerSolution = ((new Date().getTime() - startTime.getTime()) / numberSolved / 1000);
         this.mathForm.patchValue({
           a: this.randomNumber(),
