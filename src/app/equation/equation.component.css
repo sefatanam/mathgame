@@ -1,9 +1,19 @@
+:host{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container{
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .header{
   text-align: center;
   background: #584d97;
   border-radius: 5000px;
   backdrop-filter: brightness(0.5);
+  width: 100%;
 }
 
 form {
