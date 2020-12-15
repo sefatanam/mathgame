@@ -17,11 +17,22 @@ input:focus {
   outline: none;
 }
 
-.stats{
+.stats {
   position: absolute;
   bottom: 100px;
   left: 0;
   right: 0;
   text-align: center;
-  font-size:2.2rem;
+  font-size: 2.2rem;
+}
+
+.closet::after {
+  content: "Read this -";
+  background-color: yellow;
+  color: red;
+  font-weight: bold;
+}
+
+.closet {
+  background-color: aquamarine;
 }
